@@ -162,6 +162,9 @@ public class MainFrame extends javax.swing.JFrame {
         if(Message.equals("")){
             JOptionPane.showMessageDialog(null, "Message is mandatory");
         }
+        if(!firstNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
+            JOptionPane.showMessageDialog(null, "First Name must contain only letters or Chinese characters!");
+        }
         else{
                     JOptionPane.showMessageDialog(this, FirstName+" "+LastName+" "+Age+" "+Email+" "+Message, "Customer Registration Form", HEIGHT);
         }
