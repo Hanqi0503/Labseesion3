@@ -168,11 +168,11 @@ public class MainFrame extends javax.swing.JFrame {
             noError = false;
             JOptionPane.showMessageDialog(null, "Message is mandatory");
         }
-        if(!firstNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
+        if(!firstNameTextField.getText().isEmpty() & !firstNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
             noError = false;
             JOptionPane.showMessageDialog(null, "First Name must contain only letters or Chinese characters!");
         }
-        if(!lastNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
+        if(!lastNameTextField.getText().isEmpty() & !lastNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
             noError = false;
             JOptionPane.showMessageDialog(null, "Last Name must contain only letters or Chinese characters!");
         }
@@ -196,8 +196,6 @@ public class MainFrame extends javax.swing.JFrame {
         if (noError) {
         JOptionPane.showMessageDialog(this, FirstName+" "+LastName+" "+Age+" "+Email+" "+Message, "Customer Registration Form", HEIGHT);            
         }
-
-        
     }//GEN-LAST:event_submitButtonActionPerformed
 
         
