@@ -147,27 +147,57 @@ public class MainFrame extends javax.swing.JFrame {
         String Age = ageTextField.getText();
         String Email = emailTextField.getText();
         String Message = messageTextField.getText();
+        boolean noError = true;
         if(FirstName.equals("")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "First Name is mandatory");
         }
         if(LastName.equals("")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "Last Name is mandatory");
         }
         if(Age.equals("")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "Age is mandatory");   
         }
         if(Email.equals("")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "Email is mandatory");
         }
         if(Message.equals("")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "Message is mandatory");
         }
         if(!firstNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
+            noError = false;
             JOptionPane.showMessageDialog(null, "First Name must contain only letters or Chinese characters!");
         }
-        else{
-                    JOptionPane.showMessageDialog(this, FirstName+" "+LastName+" "+Age+" "+Email+" "+Message, "Customer Registration Form", HEIGHT);
+        if(!lastNameTextField.getText().matches("[a-zA-z\u4e00-\u9fa5]+")){
+            noError = false;
+            JOptionPane.showMessageDialog(null, "Last Name must contain only letters or Chinese characters!");
         }
+        if(!ageTextField.getText().isEmpty()){
+            int age;
+      
+            try {
+             age = Integer.parseInt(ageTextField.getText());
+            }
+            catch (NumberFormatException e) {
+                noError = false;
+                 JOptionPane.showMessageDialog(null, "Age must be a valid integer !");
+                return;
+            }
+        }
+        if(!emailTextField.getText().isEmpty() & !emailTextField.getText().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
+            noError = false;
+            JOptionPane.showMessageDialog(null, "Email address is not valid!");
+        }
+
+        if (noError) {
+        JOptionPane.showMessageDialog(this, FirstName+" "+LastName+" "+Age+" "+Email+" "+Message, "Customer Registration Form", HEIGHT);            
+        }
+
+        
     }//GEN-LAST:event_submitButtonActionPerformed
 
         
